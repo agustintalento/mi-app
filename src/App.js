@@ -4,6 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './estilos.css'
 import NavBar from './components/NavBar';
 import ItemListConteiner from './components/ItemListConteiner';
+import ItemCount from './components/ItemCount';
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <header>
         <NavBar />
       </header>  
-      <body>
-        <ItemListConteiner greeting="HOLA! PROXIMAMENTE LA TIENDA" />
-      </body>
+      <main>
+        <ItemListConteiner greeting="PRODUCTOS" />
+        <ItemCount stock={8} initial={1} onAdd={0} />
+      </main>
     </>
   );
 }
