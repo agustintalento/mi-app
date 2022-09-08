@@ -24,3 +24,12 @@
 #divSaludo{
     margin-top: 200px;
 }
+
+.plantaNombre {
+    padding-right: 20px;
+}
+
+.card {
+    width: 18rem; 
+    border: none;
+}

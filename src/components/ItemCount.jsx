@@ -26,7 +26,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
 
     return (
-        <>
+        <div>
             <div className="btn-group" role="group" aria-label="Controles" style={{marginBottom : 10 + 'px'}}>
                 
                 <button type="button" className="btn btn-primary" onClick={ () => {modificarCantidad(qty - 1)}} >-</button>
@@ -37,9 +37,9 @@ const ItemCount = ({stock, initial, onAdd}) => {
             <div>
                 <button type="button" className="btn btn-primary" onClick={ () => {agregarItems(qty)}} >Agregar al Carrito</button>
 
-                <p> Hay {itemAdd} productos agregados al Carrito </p>
+                <p> Stock disponible: {itemStock} uds. </p>
             </div>
-        </>
+        </div>
     )
 }
 
