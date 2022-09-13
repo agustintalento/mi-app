@@ -8,7 +8,7 @@ const Item = ({planta}) => {
             <div className="card align-items-center">
                 <img src={planta.src} className="card-img-top" alt={planta.nombre} />
                 <div className="card-body">
-                    <div className="d-flex">
+                    <div className="d-flex justify-content-center">
                         <p className="card-text plantaNombre">{planta.nombre}</p>
                         <p className="card-text plantaNombre">$ {planta.precio}</p>
                     </div>

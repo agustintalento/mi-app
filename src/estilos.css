@@ -22,14 +22,17 @@
 }
 
 #divSaludo{
-    margin-top: 200px;
+    margin-top: 20px;
 }
 
 .plantaNombre {
-    padding-right: 20px;
+    padding-right: 10px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
 }
 
 .card {
     width: 18rem; 
     border: none;
+    background-color: whitesmoke;
 }

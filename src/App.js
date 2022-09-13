@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './estilos.css'
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
-import ItemCount from './components/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
         <NavBar />
       </header>  
       <main>
-        <ItemListContainer />        
+        <ItemListContainer greeting={'PRODUCTOS'}/> 
+        <ItemDetailContainer />    
       </main>
     </>
   );

@@ -26,7 +26,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
 
     return (
-        <div>
+        <div className="d-flex align-items-center flex-column">
             <div className="btn-group" role="group" aria-label="Controles" style={{marginBottom : 10 + 'px'}}>
                 
                 <button type="button" className="btn btn-primary" onClick={ () => {modificarCantidad(qty - 1)}} >-</button>
