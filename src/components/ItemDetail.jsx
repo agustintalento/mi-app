@@ -7,8 +7,7 @@ const ItemDetail = ({item}) => {
         <div className="d-flex justify-content-center list-group-item list-group-item-action row">
             
             <div className="col-4">
-                
-                <img  src= {item.src} className="img-thumbnail" /> 
+                <img src={item.src} className="img-thumbnail" /> 
             </div>
             <div className="d-flex flex-column justify-content-center col-6">
                 <h3>{item.nombre}</h3><br />

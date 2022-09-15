@@ -29,7 +29,7 @@ const ItemListContainer = ({greeting}) => {
     return (
         <>
             <div id="divSaludo" className="d-flex justify-content-center row">
-                <h1 id="saludo" className="d-flex justify-content-center">{greeting}</h1>
+                <h1 id="saludo" className="d-flex saludo justify-content-center">{greeting}</h1>
                 <ItemList catalogo={items} /> <br /> <hr />
                 
             </div>

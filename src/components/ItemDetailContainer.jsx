@@ -1,39 +1,43 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { catalogo } from "./Catalogo";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState({});
+    const {id} =  useParams()
+
 
     useEffect(() => {
       
-        const getItem = new Promise((res, rej) => {
+        const getItem = (id) => {
             
-            const producto = catalogo.find((planta) => planta.id === 2);
+            return new Promise((res, rej) => {
+            
+            const producto = catalogo.find((planta) => planta.id === parseInt(id));
             setTimeout(() => {
                 res(producto);
             }, 2000)
-        });
+        })};
 
-        getItem.then((resp) => {
+        getItem(id).then((resp) => {
 
             setItem(resp);
         });
 
-        getItem.catch((error) => {
+        getItem(id).catch((error) => {
             console.log(error);
         });
 
-    },[])
+    },[id])
     
     return(
 
-        <>
-            <ItemDetail item ={item} />
-        </>
+        <ItemDetail item ={item} />
+        
     )
 }
 
