@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 
-const ItemCount = ({stock, initial, onAdd}) => {
+const ItemCount = ({stock, initial, onAdd, itemAddInicial}) => {
 
     const [qty, setQty] = useState(initial);
     const [itemStock, setItemStock] = useState(stock);
-    const [itemAdd, setAdd] = useState(onAdd);
+    const [itemAdd, setAdd] = useState(itemAddInicial);
 
     const modificarCantidad = (valor) => {
 
@@ -22,6 +22,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             setAdd(cantidad + itemAdd);
             setItemStock(itemStock - cantidad);
             setQty(initial);
+            onAdd(cantidad);
         }
     }
 
