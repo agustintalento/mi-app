@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 
@@ -25,6 +25,10 @@ const ItemCount = ({stock, initial, onAdd, itemAddInicial}) => {
             onAdd(cantidad);
         }
     }
+
+    useEffect(() => {
+        setItemStock(stock);
+    }, [stock]);
 
     return (
         <div className="d-flex align-items-center flex-column">

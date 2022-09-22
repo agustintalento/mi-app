@@ -1,8 +1,20 @@
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const Item = ({planta}) => {
+
+    const {addToCart} = useContext(CartContext);
+    // eslint-disable-next-line
+    const [cantidad, setCantidad] = useState(0);
+
+    const onAdd = (qty) => {
+        setCantidad(qty)
+        addToCart(planta, qty);
+    }
     return (
         <>
          
@@ -18,7 +30,10 @@ const Item = ({planta}) => {
                         </Link>
                         <p className="card-text plantaNombre">$ {planta.precio}</p>
                     </div>
-                    <ItemCount stock={planta.stock} initial={1} onAdd={0} />    
+                    {   
+                    
+                    <ItemCount stock={planta.stock} initial={1} itemAddInicial={0} onAdd={onAdd} />
+                }   
                 </div>
             
             </div>
