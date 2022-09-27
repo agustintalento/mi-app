@@ -1,12 +1,12 @@
-import React from "react";
-import { useContext } from "react";
+import {React, useContext} from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
 
-    const {deleteItem} = useContext(CartContext);
-    const {cart} = useContext(CartContext);
+    const {total, deleteItem, cart} = useContext(CartContext);
+
+    if (cart.length !== 0) {
     return(
         <>
             <h1 className="saludo d-flex justify-content-center">CARRITO</h1>
@@ -25,17 +25,33 @@ const Cart = () => {
                                 <p className="card-text plantaNombre">$ {item.precio}</p>
                             </div>
                             <p> Cantidad: {item.cantidad} uds. </p>
+                            <h3 className="saludo subtotal">Subtotal: ${item.cantidad * item.precio}</h3>
                             <button className="btn btn-secondary" onClick={() => deleteItem(item.id)}>Borrar Item</button>
 
                         </div>
-            
-                    </div>
+                    </div>    
+                        
                 )} 
+
             </div>
+            <div className="saludo d-flex justify-content-center">
+                <h2 className="precioTotal">PRECIO TOTAL: ${total()}</h2>
+            </div>
+        
+            
             
 
         </>
+    )}
+
+    return(
+        <div className="d-flex saludo flex-column align-items-center">
+            <h1>NO HAY PRODUCTOS EN EL CARRITO</h1>
+            <Link to="/"> Ir al inicio </Link>
+        </div>
     )
+
+    
 }
 
 export default Cart;

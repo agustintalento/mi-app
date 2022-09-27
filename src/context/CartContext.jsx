@@ -48,13 +48,28 @@ const CartProvider = (props) => {
 
     }
 
+    const total = () => {
+
+        return(
+            cart.reduce((prev, act) => 
+                prev + act.precio * act.cantidad, 0
+            )
+        )
+    }
+
+    const productosCarrito = () => {
+        return(
+            cart.reduce((previo, actual) => previo + actual.cantidad, 0)
+        )
+    }
+
     const clear = () => {
         setCart([]);
     }
 
 
     return (
-        <CartContext.Provider value={{cart, addToCart, clear, deleteItem}}>
+        <CartContext.Provider value={{cart, addToCart, clear, deleteItem, total, productosCarrito}}>
             {props.children}
         </CartContext.Provider>
     )

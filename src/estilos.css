@@ -11,6 +11,12 @@
     margin: 5px;
 }
 
+.cart-qty{
+    text-decoration: none;
+    color: red;
+    font-size: 2rem;
+}
+
 
 .navbar-brand{
     font-size: 2.25rem;
@@ -23,6 +29,14 @@
 
 #divSaludo{
     margin-top: 20px;
+}
+
+.subtotal {
+    font-size: 2.5rem;
+}
+
+.precioTotal {
+    font-size: 5rem;
 }
 
 .plantaNombre {
