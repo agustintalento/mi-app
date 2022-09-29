@@ -2,8 +2,31 @@ import React from "react";
 import logo from '../assets/img/logo.png';
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { db } from "./firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
+import { useState } from "react";
+
+
 
 const NavBar = () => {
+
+    const [categoryList, setCategoryList] = useState([]);
+   
+    useEffect(() => {
+        const catCollection = collection(db, 'categories')
+        getDocs(catCollection).then((resp) => {
+            const categories = resp.docs.map((category) => {
+                return{
+                    id: category.id,
+                    ...category.data()
+                }
+            });
+            setCategoryList(categories);
+            
+        });
+
+    },[categoryList]);
 
     return (
         <nav className="navbar navbar-light bg-light justify-content-evenly">
@@ -14,13 +37,9 @@ const NavBar = () => {
                 <div className="dropdown">
                     <a className="navbar-brand dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" >CATEGORIAS</a>
                     <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to={`/category/Palmeras`}>PALMERAS</Link></li>
-                        <li><Link className="dropdown-item" to={`/category/Herbáceas`}>HERBÁCEAS</Link></li>
-                        <li><Link className="dropdown-item" to={`/category/Suculentas`}>SUCULENTAS</Link></li>
-                        <li><Link className="dropdown-item" to={`/category/Trepadoras`}>TREPADORAS</Link></li>
-                        <li><Link className="dropdown-item" to={`/category/Arbustos`}>ARBUSTOS</Link></li>
-                        <li><Link className="dropdown-item" to={`/category/Helechos`}>HELECHOS</Link></li>
-
+                        {categoryList.map( category => 
+                            <li key={category.id}><Link key={category.id} className="dropdown-item" to={`category/${category.name}`}>{category.name}</Link></li>
+                        )}
                     </ul>
                 </div>
             </div>

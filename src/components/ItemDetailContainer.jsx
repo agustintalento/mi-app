@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { catalogo } from "./Catalogo";
+import {doc, getDoc, collection,} from "firebase/firestore";
+import { db} from "./firebaseConfig"
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
@@ -12,26 +13,17 @@ const ItemDetailContainer = () => {
 
 
     useEffect(() => {
-      
-        const getItem = (id) => {
-            
-            return new Promise((res, rej) => {
-            
-            const producto = catalogo.find((planta) => planta.id === parseInt(id));
-            setTimeout(() => {
-                res(producto);
-            }, 2000)
-        })};
 
-        getItem(id).then((resp) => {
+        const prodCollection = collection(db, 'productos');
+        const ref = doc(prodCollection, id);
+        getDoc(ref).then((res) => {
+            setItem({
+                id: res.id,
+                ...res.data(),
 
-            setItem(resp);
+            });
         });
-
-        getItem(id).catch((error) => {
-            console.log(error);
-        });
-
+       
     },[id])
     
     return(

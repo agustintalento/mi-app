@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ItemList from "./ItemList";
-import { catalogo } from "./Catalogo";
+import { where, collection, getDocs, query} from "firebase/firestore";
+import { db} from "./firebaseConfig"
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({greeting}) => {    
 
     const [items, setItems] = useState([]);
+    const {tipo} = useParams();
 
     useEffect(() => {
 
-    
-        const promesa = new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve(catalogo);
-                }, 2000) 
+
+        const prodCollection = collection(db, 'productos');
+        const ref = tipo ? query(prodCollection, where('tipo', "==", tipo)) : prodCollection;
+        getDocs(ref).then((resp) => {
+            const products = resp.docs.map((product) => {
+                return{
+                    id: product.id,
+                    ...product.data()
+                }
             });
+            setItems(products);
             
-
-            promesa.then((respuesta) => {
-
-                setItems(respuesta);
-            });
-
+        });
         
-        }, [] 
+        }, [tipo] 
     );
 
     return (
