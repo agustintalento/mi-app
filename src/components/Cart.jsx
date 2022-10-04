@@ -29,12 +29,17 @@ const Cart = () => {
                             <button className="btn btn-secondary" onClick={() => deleteItem(item.id)}>Borrar Item</button>
 
                         </div>
+                        
                     </div>    
                         
                 )} 
 
             </div>
+            <div className="d-flex justify-content-center">
+                <Link to={'/checkout'}><button className="btn btn-primary">Proceed To Checkout</button></Link>
+            </div>
             <div className="saludo d-flex justify-content-center">
+                
                 <h2 className="precioTotal">PRECIO TOTAL: ${total()}</h2>
             </div>
         
