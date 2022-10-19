@@ -6,4 +6,4 @@ Se implementó un listado de productos con filtros por categoría, un carrito co
 
 
 
-![guava 2 220alto](https://user-images.githubusercontent.com/68829852/196567543-933e89da-0ecf-40b3-a165-7aacadc80c19.png)
+  ![guava 2 220alto](https://user-images.githubusercontent.com/68829852/196567543-933e89da-0ecf-40b3-a165-7aacadc80c19.png)
