@@ -2,12 +2,9 @@ import React from "react";
 import logo from '../assets/img/logo.png';
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { db } from "./FirebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
-import { useState } from "react";
-
-
 
 const NavBar = () => {
 

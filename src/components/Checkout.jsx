@@ -7,13 +7,13 @@ import {collection, addDoc } from "firebase/firestore";
 import {db} from "./FirebaseConfig";
 
 const Checkout = () => {
-    const {cart, total, deleteItem, clear, productosCarrito} = useContext(CartContext);
+    const {cart, total, deleteItem, clear} = useContext(CartContext);
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [orderId, setOrderId] = useState("");
 
-    const getOrder = () => {
+    const setOrder = () => {
         if ((name !== "") && (email !== "") && (phone !== "")) {
             const buyer = {name:name, email:email, phone:phone};
             const items = [];
@@ -32,7 +32,6 @@ const Checkout = () => {
         }
     }
 
-    console.log(cart);
     return(
         <div className="container py-5">
             {(cart.length !== 0) ?
@@ -51,7 +50,7 @@ const Checkout = () => {
                             <label htmlFor="phone" className="form-label">Teléfono</label>
                             <input type="text" className="form-control" id="phone" onInput={(e) => setPhone(e.target.value)} />
                         </div>
-                        <button type="button" className="btn btn-secondary" onClick={() => {getOrder()}}>Finalizar Compra</button>
+                        <button type="button" className="btn btn-secondary" onClick={() => {setOrder()}}>Finalizar Compra</button>
                     </div>
                
 
